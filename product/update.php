@@ -18,8 +18,12 @@ $data = json_decode(file_get_contents('php://input'));
 
 $product->id = $data->id;
 
-$product->name = $data->name;
-$product->price = $data->price;
+// A ser feito: Antes de atualizar, o ideal é ver se o produto existe.
+// Podemos chamar o método readOne() para ver se ele existe na base,
+// ou criar um método que apenas recebe o ID e verifica se o produto existe.
+
+$product->name        = $data->name;
+$product->price       = $data->price;
 $product->description = $data->description;
 $product->category_id = $data->category_id;
 
