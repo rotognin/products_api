@@ -36,10 +36,22 @@ if ($num > 0){
             'category_name' => $category_name
         );
 
-
+        array_push($products_arr, $product_item);
     }
 
-}
+    // Paginação
+    $total_rows = $product->count();
+    $page_url = $home_url . 'product/read_paging.php?';
+    $paging = $utilities->getPaging($page, $total_rows, $records_per_page, $page_url);
+    $products_arr['paging'] = $paging;
 
+    http_response_code(200);
+
+    echo json_encode($products_arr);
+} else {
+    http_response_code(404);
+
+    echo json_encode(array('message' => 'Nenhum produto encontrado'));
+}
 
 ?>
