@@ -41,10 +41,17 @@ if ($request_method == 'GET'){
         echo json_encode(array('message' => 'Rota não encontrada'));
         exit();
     }
+
+    $id = (isset($_GET['id'])) ? (int) $_GET['id'] : (int) 0;
 }
 
 if ($get == 'products'){
-    include_once 'product/read.php';
+    if ($id > 0){
+        include_once 'product/read_one.php';
+    } else {
+        include_once 'product/read.php';
+    }
+    
 } else {
     http_response_code(404);
     echo json_encode(array('message' => 'Rota não encontrada.'));

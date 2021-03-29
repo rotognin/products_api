@@ -68,10 +68,10 @@ class Product
                'p.category_id, p.create ' .
                'FROM ' . $this->table_name . ' p ' .
                'LEFT JOIN categories c ON p.category_id = c.id ' .
-               'WHERE p.id = ? LIMIT 0,1';
+               'WHERE p.id = :id LIMIT 0,1';
 
-        $this->conn->prepare($sql);
-        $stmt->bindParam(1, $this->id);
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue('id', $this->id, PDO::PARAM_INT);
         $stmt->execute();
 
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
