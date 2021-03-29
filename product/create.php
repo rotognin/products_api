@@ -32,7 +32,7 @@ if (!empty($data->name)        &&
         echo json_encode(array('message' => 'Produto criado.'));
     } else {
         http_response_code(503); // Service Unavailable
-
+        echo json_encode(array('message' => 'Não foi possível criar o produto. Serviço indisponível.'));
     }
 } else {
     http_response_code(400); // Bad request

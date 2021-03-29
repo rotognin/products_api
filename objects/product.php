@@ -65,7 +65,7 @@ class Product
     {
         $sql = 'SELECT c.name as category_name, ' . 
                'p.id, p.name, p.description, p.price, ' . 
-               'p.category_id, p.create ' .
+               'p.category_id, p.created ' .
                'FROM ' . $this->table_name . ' p ' .
                'LEFT JOIN categories c ON p.category_id = c.id ' .
                'WHERE p.id = :id LIMIT 0,1';
@@ -118,7 +118,7 @@ class Product
     {
         $sql = 'DELETE FROM ' . $this->table_name . ' WHERE id = ?';
 
-        $stmt = $this->conn-prepare($query);
+        $stmt = $this->conn->prepare($sql);
         $this->id = htmlspecialchars(strip_tags($this->id));
         $stmt->bindParam(1, $this->id);
 

@@ -1,3 +1,7 @@
-GET http://localhost/apis/produtos/api/?object=products&id=1 HTTP/1.1
+
+POST http://localhost/apis/produtos/api/?action=delete&object=product HTTP/1.1
 content-type: application/json
 
+{
+    "id": 65
+}
